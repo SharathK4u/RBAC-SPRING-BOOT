@@ -23,7 +23,7 @@ import com.skdamoda.rbac.exception.ResourceNotFoundException;
 import com.skdamoda.rbac.model.Privilege;
 import com.skdamoda.rbac.repository.PrivilegeRepository;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:3001")
 @RestController
 @RequestMapping("/api/v1")
 public class PrivilegeController {
@@ -54,8 +54,8 @@ public class PrivilegeController {
 		Privilege privilege = privilegeRepository.findById(privilegeId)
 				.orElseThrow(() -> new ResourceNotFoundException("Privilege not found for this id :: " + privilegeId));
 
-		privilege.setPrivilegeName(privilegeDetails.getPrivilegeName());
-		privilege.setPrivilegeDescription(privilegeDetails.getPrivilegeDescription());
+		privilege.setName(privilegeDetails.getName());
+		privilege.setDescription(privilegeDetails.getDescription());
 		privilege.setAction(privilegeDetails.getAction());
 		privilege.setResource(privilegeDetails.getResource());
 		final Privilege updatedPrivilege = privilegeRepository.save(privilege);

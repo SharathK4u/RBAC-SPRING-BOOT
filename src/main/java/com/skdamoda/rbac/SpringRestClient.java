@@ -66,7 +66,7 @@ public class SpringRestClient {
 
 	private void createEmployee() {
 
-		User newEmployee = new User("admin", "admin", "admin@gmail.com");
+		User newEmployee = new User("admin", "admin", 35);
 
 		RestTemplate restTemplate = new RestTemplate();
 		User result = restTemplate.postForObject(CREATE_EMPLOYEE_ENDPOINT_URL, newEmployee, User.class);
@@ -77,7 +77,7 @@ public class SpringRestClient {
 	private void updateEmployee() {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("id", "1");
-		User updatedEmployee = new User("admin123", "admin123", "admin123@gmail.com");
+		User updatedEmployee = new User("admin123", "admin123", 37);
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.put(UPDATE_EMPLOYEE_ENDPOINT_URL, updatedEmployee, params);
 	}

@@ -38,7 +38,7 @@ public class UserControllerIntegrationTest {
 	@Test
 	public void testCreateUser() {
 		User user = new User();
-		user.setEmailId("admin@gmail.com");
+		user.setAge(35);
 		user.setFirstName("admin");
 		user.setLastName("admin");
 

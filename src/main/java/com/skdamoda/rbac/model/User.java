@@ -9,23 +9,23 @@ public class User {
 	private long id;
 	private String firstName;
 	private String lastName;
-	private String emailId;
+	private int age;
 	private Role role;
 	
 	public User() {
 		
 	}
 	
-	public User(String firstName, String lastName, String emailId) {
+	public User(String firstName, String lastName, int age) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.emailId = emailId;
+		this.age = age;
 	}
 
-	public User(String firstName, String lastName, String emailId,Role role) {
+	public User(String firstName, String lastName, int age,Role role) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.emailId = emailId;
+		this.age = age;
 		this.role=role;
 	}
 	
@@ -54,12 +54,12 @@ public class User {
 		this.lastName = lastName;
 	}
 	
-	@Column(name = "email_id", nullable = false)
-	public String getEmailId() {
-		return emailId;
+	@Column(name = "age", nullable = false)
+	public int getAge() {
+		return age;
 	}
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -81,7 +81,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", emailId=" + emailId
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
 				+ "]";
 	}
 

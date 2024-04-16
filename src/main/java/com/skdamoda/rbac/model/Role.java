@@ -13,8 +13,8 @@ import jakarta.persistence.*;
 public class Role {
 
 	private long id;
-	private String roleName;
-	private String roleDescription;
+	private String name;
+	private String description;
 	@JsonIgnore
 	private List<User> users;
 	private Set<Privilege> privileges;
@@ -24,12 +24,12 @@ public class Role {
 	}
 	
 	public Role(String roleName, String roleDescription) {
-		this.roleName = roleName;
-		this.roleDescription = roleDescription;
+		this.name = roleName;
+		this.description = roleDescription;
 	}
 	public Role(String roleName, String roleDescription,Set<Privilege> privileges) {
-		this.roleName = roleName;
-		this.roleDescription = roleDescription;
+		this.name = roleName;
+		this.description = roleDescription;
 		this.privileges=privileges;
 	}
 	
@@ -43,19 +43,19 @@ public class Role {
 	}
 	
 	@Column(name = "role_name", nullable = false)
-	public String getRoleName() {
-		return roleName;
+	public String getName() {
+		return name;
 	}
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
+	public void setName(String roleName) {
+		this.name = roleName;
 	}
 	
 	@Column(name = "role_description", nullable = false)
-	public String getRoleDescription() {
-		return roleDescription;
+	public String getDescription() {
+		return description;
 	}
-	public void setRoleDescription(String roleDescription) {
-		this.roleDescription = roleDescription;
+	public void setDescription(String roleDescription) {
+		this.description = roleDescription;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "role")
@@ -99,7 +99,7 @@ public class Role {
 	
 	@Override
 	public String toString() {
-		return "Role [id=" + id + ", roleName=" + roleName + ", roleDescription=" + roleDescription +  "]";
+		return "Role [id=" + id + ", roleName=" + name + ", roleDescription=" + description +  "]";
 	}
 
 	@Override

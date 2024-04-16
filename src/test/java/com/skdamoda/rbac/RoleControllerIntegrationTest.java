@@ -48,15 +48,15 @@ public class RoleControllerIntegrationTest {
 	@Test
 	public void testGetRoleById() {
 		Role role = restTemplate.getForObject(getRootUrl() + "/roles/1", Role.class);
-		System.out.println(role.getRoleName());
+		System.out.println(role.getName());
 		assertNotNull(role);
 	}
 
 	@Test
 	public void testCreateRole() {
 		Role role = new Role();
-		role.setRoleName("admin");
-		role.setRoleDescription("Admin has all access");
+		role.setName("admin");
+		role.setDescription("Admin has all access");
 
 		ResponseEntity<Role> postResponse = restTemplate.postForEntity(getRootUrl() + "/roles", role, Role.class);
 		assertNotNull(postResponse);
@@ -67,8 +67,8 @@ public class RoleControllerIntegrationTest {
 	public void testUpdateRole() {
 		int id = 1;
 		Role role = restTemplate.getForObject(getRootUrl() + "/roles/" + id, Role.class);
-		role.setRoleName("admin1");
-		role.setRoleDescription("Admin1 has alla Access");
+		role.setName("admin1");
+		role.setDescription("Admin1 has alla Access");
 
 		restTemplate.put(getRootUrl() + "/roles/" + id, role);
 

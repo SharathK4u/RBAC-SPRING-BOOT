@@ -12,8 +12,8 @@ import jakarta.persistence.*;
 public class Privilege {
 
 	private long id;
-	private String privilegeName;
-	private String privilegeDescription;
+	private String name;
+	private String description;
 	private String action;
 	private String resource;
 	@JsonIgnore
@@ -24,8 +24,8 @@ public class Privilege {
 	}
 	
 	public Privilege(String privilegeName, String privilegeDescription, String action, String resource) {
-		this.privilegeName = privilegeName;
-		this.privilegeDescription = privilegeDescription;
+		this.name = privilegeName;
+		this.description = privilegeDescription;
 		this.action = action;
 		this.resource = resource;
 	}
@@ -40,19 +40,19 @@ public class Privilege {
 	}
 	
 	@Column(name = "privilege_name", nullable = false)
-	public String getPrivilegeName() {
-		return privilegeName;
+	public String getName() {
+		return name;
 	}
-	public void setPrivilegeName(String privilegeName) {
-		this.privilegeName = privilegeName;
+	public void setName(String privilegeName) {
+		this.name = privilegeName;
 	}
 	
 	@Column(name = "privilege_description", nullable = false)
-	public String getPrivilegeDescription() {
-		return privilegeDescription;
+	public String getDescription() {
+		return description;
 	}
-	public void setPrivilegeDescription(String privilegeDescription) {
-		this.privilegeDescription = privilegeDescription;
+	public void setDescription(String privilegeDescription) {
+		this.description = privilegeDescription;
 	}
 	@Column(name = "action", nullable = false)
 	public String getAction() {
@@ -79,7 +79,7 @@ public class Privilege {
 
 	@Override
 	public String toString() {
-		return "Privilege [id=" + id + ", privilegeName=" + privilegeName + ", privilegeDescription=" + privilegeDescription +  "]";
+		return "Privilege [id=" + id + ", privilegeName=" + name + ", privilegeDescription=" + description +  "]";
 	}
 
 	@Override

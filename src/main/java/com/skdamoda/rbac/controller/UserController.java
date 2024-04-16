@@ -25,7 +25,7 @@ import com.skdamoda.rbac.model.User;
 import com.skdamoda.rbac.repository.RoleRepository;
 import com.skdamoda.rbac.repository.UserRepository;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:3001")
 @RestController
 @RequestMapping("/api/v1")
 public class UserController {
@@ -72,7 +72,7 @@ public class UserController {
 		User user = userRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));
 
-		user.setEmailId(userDetails.getEmailId());
+		user.setAge(userDetails.getAge());
 		user.setLastName(userDetails.getLastName());
 		user.setFirstName(userDetails.getFirstName());
 		final User updatedUser = userRepository.save(user);

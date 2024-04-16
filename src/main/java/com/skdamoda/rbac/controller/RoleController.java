@@ -26,7 +26,7 @@ import com.skdamoda.rbac.model.Role;
 import com.skdamoda.rbac.repository.PrivilegeRepository;
 import com.skdamoda.rbac.repository.RoleRepository;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:3001")
 @RestController
 @RequestMapping("/api/v1")
 public class RoleController {
@@ -67,8 +67,8 @@ public class RoleController {
 		Role role = roleRepository.findById(roleId)
 				.orElseThrow(() -> new ResourceNotFoundException("Role not found for this id :: " + roleId));
 
-		role.setRoleName(roleDetails.getRoleName());
-		role.setRoleDescription(roleDetails.getRoleDescription());
+		role.setName(roleDetails.getName());
+		role.setDescription(roleDetails.getDescription());
 		final Role updatedRole = roleRepository.save(role);
 		return ResponseEntity.ok(updatedRole);
 	}

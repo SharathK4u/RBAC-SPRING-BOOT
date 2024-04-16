@@ -26,22 +26,22 @@ public class SpringRestClient {
 		SpringRestClient springRestClient = new SpringRestClient();
 		
 		// Step1: first create a new employee
-		springRestClient.createEmployee();
+		springRestClient.createUser();
 		
 		// Step 2: get new created employee from step1
-		springRestClient.getEmployeeById();
+		springRestClient.getUserById();
 		
 		// Step3: get all employees
-		springRestClient.getEmployees();
+		springRestClient.getUsers();
 		
 		// Step4: Update employee with id = 1
-		springRestClient.updateEmployee();
+		springRestClient.updateUser();
 		
 		// Step5: Delete employee with id = 1
-		springRestClient.deleteEmployee();
+		springRestClient.deleteUser();
 	}
 
-	private void getEmployees() {
+	private void getUsers() {
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -53,7 +53,7 @@ public class SpringRestClient {
 		System.out.println(result);
 	}
 
-	private void getEmployeeById() {
+	private void getUserById() {
 
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("id", "1");
@@ -64,25 +64,25 @@ public class SpringRestClient {
 		System.out.println(result);
 	}
 
-	private void createEmployee() {
+	private void createUser() {
 
-		User newEmployee = new User("admin", "admin", 35);
+		User newUser = new User("admin", "admin", 35);
 
 		RestTemplate restTemplate = new RestTemplate();
-		User result = restTemplate.postForObject(CREATE_EMPLOYEE_ENDPOINT_URL, newEmployee, User.class);
+		User result = restTemplate.postForObject(CREATE_EMPLOYEE_ENDPOINT_URL, newUser, User.class);
 
 		System.out.println(result);
 	}
 
-	private void updateEmployee() {
+	private void updateUser() {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("id", "1");
-		User updatedEmployee = new User("admin123", "admin123", 37);
+		User updatedUser = new User("admin123", "admin123", 37);
 		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.put(UPDATE_EMPLOYEE_ENDPOINT_URL, updatedEmployee, params);
+		restTemplate.put(UPDATE_EMPLOYEE_ENDPOINT_URL, updatedUser, params);
 	}
 
-	private void deleteEmployee() {
+	private void deleteUser() {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("id", "1");
 		RestTemplate restTemplate = new RestTemplate();

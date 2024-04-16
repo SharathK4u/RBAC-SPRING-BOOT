@@ -1,7 +1,7 @@
 package com.skdamoda.rbac.controller;
 
 import java.util.HashMap;
-
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -50,7 +50,7 @@ public class RoleController {
 
 	@PostMapping("/roles")
 	public Role createRole(@Valid @RequestBody Role role) throws ResourceNotFoundException {
-		Set<Privilege> privileges=role.getPrivileges();
+		Set<Privilege> privileges= new HashSet<>(role.getPrivileges());
 		if(privileges!=null && privileges.size()!=0){
 			for(Privilege privilege:privileges){
 				Privilege privilegeDetails = privilegeRepository.findById(privilege.getId())
